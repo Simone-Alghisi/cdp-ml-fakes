@@ -149,8 +149,11 @@ if __name__ == '__main__':
 
     svm2_results = calc(list(product(['svm2a'], train_subsets_2, ratios, seeds, [metrics])))
     svm2p_results = calc(list(product(['smv2p'], train_subsets_2, ratios, seeds, [['corr', 'jaccard'], ['hamming', 'ssim']])))
+    
+    svm1s_results = calc(list(product(['svm1s'], train_subsets_1, ratios, seeds, [['ssim'], ['corr'], ['jaccard'], ['hamming']])))
 
-    df_out = pd.DataFrame(svm1_results + svm1p_results + svm2_results + svm2p_results)
+
+    df_out = pd.DataFrame(svm1_results + svm1p_results + svm2_results + svm2p_results + svm1s_results)
     df_out = df_out.set_axis(
         [
             'Mode', 'Trained', 'Tested', r'$P_D$', r'$P_A$', 'Ratio', 'Seed', 'Metrics', r'$P_{amiss}$', r'$P_{fa}$'
